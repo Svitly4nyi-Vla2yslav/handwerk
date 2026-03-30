@@ -101,7 +101,9 @@ export const HeaderActions = styled.div`
 export const PhonePill = styled.a<{ $solid?: boolean }>`
   display: inline-flex;
   align-items: center;
-  padding: 12px 16px;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
   border: 1px solid
     ${({ $solid }) =>
       $solid ? 'rgba(21, 33, 43, 0.1)' : 'rgba(255, 255, 255, 0.18)'};
@@ -115,6 +117,11 @@ export const PhonePill = styled.a<{ $solid?: boolean }>`
     background 0.24s ease,
     border-color 0.24s ease,
     color 0.24s ease;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;
@@ -224,11 +231,19 @@ export const FloatingPhoneLink = styled.a`
   bottom: 92px;
   z-index: 17;
   display: inline-flex;
-  padding: 14px 18px;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
   border-radius: ${({ theme }) => theme.radii.pill};
   background: ${({ theme }) => theme.colors.surfaceDark};
   color: ${({ theme }) => theme.colors.textOnDark};
   box-shadow: ${({ theme }) => theme.shadows.strong};
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;

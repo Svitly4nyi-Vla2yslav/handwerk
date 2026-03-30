@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { PhoneIcon } from './PhoneIcon';
 import { company, navigation } from '../data/siteContent';
 import { BrandMark, BrandText, Button } from '../styles/primitives';
 import {
@@ -62,9 +63,10 @@ export function Header({ onPrimaryCta }: HeaderProps) {
         <HeaderActions>
           <PhonePill
             href={company.phoneHref}
+            aria-label={`Jetzt anrufen: ${company.phoneDisplay}`}
             $solid={isSolid}
           >
-            {company.phoneDisplay}
+            <PhoneIcon />
           </PhonePill>
           <Button
             $variant="primary"

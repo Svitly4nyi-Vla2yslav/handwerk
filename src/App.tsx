@@ -10,6 +10,7 @@ import { LocalAreaSection } from './components/LocalAreaSection';
 import { MainServicesSection } from './components/MainServicesSection';
 import { MobileCtaBar } from './components/MobileCtaBar';
 import { ProcessSection } from './components/ProcessSection';
+import { PhoneIcon } from './components/PhoneIcon';
 import { ServiceIntentGrid } from './components/ServiceIntentGrid';
 import { StructuredData } from './components/StructuredData';
 import { TrustSection } from './components/TrustSection';
@@ -70,9 +71,9 @@ function App() {
       <MobileCtaBar onSelectInquiry={handleSelectInquiry} />
       <FloatingPhoneLink
         href={company.phoneHref}
-        aria-label="Jetzt anrufen"
+        aria-label={`Jetzt anrufen: ${company.phoneDisplay}`}
       >
-        {company.phoneDisplay}
+        <PhoneIcon />
       </FloatingPhoneLink>
     </>
   );
