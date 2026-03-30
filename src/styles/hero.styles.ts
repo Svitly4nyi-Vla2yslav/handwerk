@@ -14,26 +14,38 @@ import {
 export const HeroSectionWrap = styled.section`
   position: relative;
   width: 100%;
+  height: 100vh;
+  height: 100svh;
+  height: 100dvh;
   min-height: 100vh;
   min-height: 100svh;
   min-height: 100dvh;
-  overflow: visible;
+  overflow: clip;
   isolation: isolate;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    height: auto;
+  }
 `;
 
 export const HeroGrid = styled(Container)`
-  display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  gap: 28px;
-  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(20px, 3vh, 30px);
+  height: 100%;
+  min-height: 100%;
   position: relative;
   z-index: 1;
-  padding-top: clamp(118px, 15vh, 168px);
-  padding-bottom: clamp(48px, 9vh, 92px);
+  box-sizing: border-box;
+  padding-top: calc(${({ theme }) => theme.layout.headerHeight} + clamp(30px, 4.4vh, 46px));
+  padding-bottom: clamp(20px, 2.8vh, 32px);
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
-    gap: 22px;
-    padding-top: clamp(104px, 14vh, 132px);
+    height: auto;
+    min-height: inherit;
+    gap: 24px;
+    padding-top: calc(${({ theme }) => theme.layout.headerHeight} + 22px);
     padding-bottom: 56px;
   }
 `;
@@ -41,8 +53,8 @@ export const HeroGrid = styled(Container)`
 export const HeroContent = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  max-width: 760px;
+  justify-content: flex-end;
+  max-width: 720px;
 `;
 
 export const HeroBackground = styled.div`
@@ -75,29 +87,48 @@ export const HeroEyebrow = styled(Eyebrow)`
 
 export const HeroTitle = styled.h1`
   ${headingTypography};
-  font-size: clamp(2.7rem, 6vw, 5rem);
-  margin: 18px 0 16px;
-  max-width: 12ch;
+  font-size: clamp(2.46rem, 4.85vw, 4.45rem);
+  line-height: 0.92;
+  margin: 16px 0 14px;
+  max-width: 11.2ch;
   color: ${({ theme }) => theme.colors.textOnDark};
+  text-wrap: balance;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     max-width: none;
+    font-size: clamp(2.7rem, 11vw, 4rem);
+    line-height: 0.95;
+  }
+
+  @media (min-width: 781px) and (max-height: 940px) {
+    font-size: clamp(2.24rem, 4.18vw, 3.9rem);
+    margin: 14px 0 12px;
+  }
+
+  @media (min-width: 781px) and (max-height: 860px) {
+    font-size: clamp(2.02rem, 3.72vw, 3.5rem);
+    margin: 12px 0 10px;
   }
 `;
 
 export const HeroLead = styled.p`
   color: rgba(238, 242, 244, 0.82);
-  line-height: 1.72;
+  line-height: 1.68;
   margin: 0;
-  max-width: 62ch;
-  font-size: 1.06rem;
+  max-width: 58ch;
+  font-size: 1.03rem;
+
+  @media (min-width: 781px) and (max-height: 940px) {
+    line-height: 1.58;
+    font-size: 0.98rem;
+  }
 `;
 
 export const HeroActions = styled.div`
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
-  margin: 26px 0 10px;
+  margin: 18px 0 8px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     flex-direction: column;
@@ -107,6 +138,10 @@ export const HeroActions = styled.div`
       width: 100%;
     }
   }
+
+  @media (min-width: 781px) and (max-height: 940px) {
+    margin: 16px 0 6px;
+  }
 `;
 
 export const GhostButton = styled(Button).attrs({ $variant: 'ghost' as const })``;
@@ -114,10 +149,10 @@ export const GhostButton = styled(Button).attrs({ $variant: 'ghost' as const })`
 export const HeroTrustList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 30px 0 0;
+  margin: 18px 0 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: 12px 14px;
 
   li {
     position: relative;
@@ -139,23 +174,28 @@ export const HeroTrustList = styled.ul`
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: 1fr;
   }
+
+  @media (min-width: 781px) and (max-height: 940px) {
+    margin-top: 16px;
+    gap: 10px 14px;
+  }
 `;
 
 export const HeroQuickActions = styled.div`
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 18px;
+  margin-top: 10px;
 `;
 
 export const HeroVisual = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 3fr) minmax(240px, 1fr);
-  gap: 16px;
+  gap: 12px;
   align-items: stretch;
   max-width: 1080px;
-  padding-bottom: 6px;
+  margin-top: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     grid-template-columns: 1fr;
@@ -217,7 +257,7 @@ export const ChipButton = styled.button`
 export const HeroStats = styled.div`
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 12px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     grid-template-columns: 1fr;
@@ -226,7 +266,7 @@ export const HeroStats = styled.div`
 
 export const HeroStatCard = styled.article`
   ${PanelBase};
-  padding: 20px 22px;
+  padding: 16px 18px;
   background: rgba(13, 20, 26, 0.58);
   border-color: rgba(255, 255, 255, 0.08);
   box-shadow: none;
@@ -241,12 +281,16 @@ export const HeroStatCard = styled.article`
 
   span {
     color: rgba(238, 242, 244, 0.72);
-    line-height: 1.55;
+    line-height: 1.52;
+  }
+
+  @media (min-width: 781px) and (max-height: 940px) {
+    padding: 14px 16px;
   }
 `;
 
 export const HeroNote = styled.div`
-  padding: 20px 22px;
+  padding: 16px 18px;
   border-radius: ${({ theme }) => theme.radii.md};
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(13, 20, 26, 0.58);
@@ -254,7 +298,7 @@ export const HeroNote = styled.div`
 
   p {
     color: rgba(238, 242, 244, 0.72);
-    line-height: 1.55;
+    line-height: 1.52;
     margin: 0;
   }
 `;

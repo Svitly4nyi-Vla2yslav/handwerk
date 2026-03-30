@@ -44,7 +44,15 @@ export function HeroSection({ onSelectInquiry }: HeroSectionProps) {
       <HeroGrid>
         <HeroContent>
           <HeroEyebrow>Regionaler SHK-Service im Raum Hildesheim</HeroEyebrow>
-          <HeroTitle>Heizung, Sanitär &amp; Wärmepumpen in Hildesheim – schnell vor Ort</HeroTitle>
+          <HeroTitle>
+            Heizung,
+            <br />
+            Sanitär &amp; Wärmepumpen
+            <br />
+            in Hildesheim -
+            <br />
+            schnell vor Ort
+          </HeroTitle>
           <HeroLead>
             Moderne Heizsysteme, verlässliche Installation, saubere Bad- und Sanitärarbeiten
             sowie schnelle Unterstützung bei Wartung und Reparatur.
