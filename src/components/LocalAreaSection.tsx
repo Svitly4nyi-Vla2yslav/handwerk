@@ -1,15 +1,14 @@
 import { areaList } from '../data/siteContent';
+import { localAreaMedia } from '../data/mediaAssets';
 import { Button, Section } from '../styles/primitives';
 import {
   AreaTag,
   AreaTags,
   LocalCopy,
-  MapCaption,
-  MapCard,
-  MapMarker,
-  MapSurface,
   TwoColumnLayout
 } from '../styles/marketing.styles';
+import { LocalMediaChip, LocalMediaChips } from '../styles/media.styles';
+import { SectionImage } from './SectionImage';
 import { SectionHeading } from './SectionHeading';
 
 interface LocalAreaSectionProps {
@@ -48,22 +47,17 @@ export function LocalAreaSection({ onSelectInquiry }: LocalAreaSectionProps) {
           </Button>
         </div>
 
-        <MapCard>
-          <MapSurface>
-            <MapMarker $position="center">Hildesheim</MapMarker>
-            <MapMarker $position="north">Himmelsthür</MapMarker>
-            <MapMarker $position="east">Harsum</MapMarker>
-            <MapMarker $position="south">Bad Salzdetfurth</MapMarker>
-            <MapMarker $position="west">Giesen</MapMarker>
-          </MapSurface>
-          <MapCaption>
-            <strong>Lokaler Fokus statt Streuverlust</strong>
-            <p>
-              Heizung Hildesheim, Sanitär Hildesheim, Wärmepumpe Hildesheim und
-              Heizungsmodernisierung Hildesheim sind hier bewusst organisch eingebunden.
-            </p>
-          </MapCaption>
-        </MapCard>
+        <SectionImage
+          asset={localAreaMedia}
+          overlay="dark"
+          ratio="4 / 4.25"
+        >
+          <LocalMediaChips>
+            <LocalMediaChip>Hildesheim</LocalMediaChip>
+            <LocalMediaChip>kurze Wege</LocalMediaChip>
+            <LocalMediaChip>regional vor Ort</LocalMediaChip>
+          </LocalMediaChips>
+        </SectionImage>
       </TwoColumnLayout>
     </Section>
   );

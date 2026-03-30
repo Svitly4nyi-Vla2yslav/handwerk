@@ -1,18 +1,20 @@
 import { company, heroStats, heroTrustPoints } from '../data/siteContent';
+import { heroMedia } from '../data/mediaAssets';
 import { Button, ButtonLink } from '../styles/primitives';
 import {
   ChipButton,
   GhostButton,
   HeroActions,
+  HeroBackground,
+  HeroBackgroundImage,
   HeroContent,
   HeroEyebrow,
   HeroGrid,
   HeroLead,
   HeroNote,
   HeroNoteLabel,
-  HeroPanel,
-  HeroPanelActions,
-  HeroPanelEyebrow,
+  HeroOverlay,
+  HeroQuickActions,
   HeroSectionWrap,
   HeroStatCard,
   HeroStats,
@@ -28,6 +30,17 @@ interface HeroSectionProps {
 export function HeroSection({ onSelectInquiry }: HeroSectionProps) {
   return (
     <HeroSectionWrap id="start">
+      <HeroBackground>
+        <HeroBackgroundImage
+          alt={heroMedia.alt}
+          decoding="async"
+          fetchPriority="high"
+          loading="eager"
+          src={heroMedia.src}
+        />
+        <HeroOverlay />
+      </HeroBackground>
+
       <HeroGrid>
         <HeroContent>
           <HeroEyebrow>Regionaler SHK-Service im Raum Hildesheim</HeroEyebrow>
@@ -65,38 +78,30 @@ export function HeroSection({ onSelectInquiry }: HeroSectionProps) {
               <li key={point}>{point}</li>
             ))}
           </HeroTrustList>
+
+          <HeroQuickActions>
+            <ChipButton
+              type="button"
+              onClick={() => onSelectInquiry('Heizung')}
+            >
+              Heizung
+            </ChipButton>
+            <ChipButton
+              type="button"
+              onClick={() => onSelectInquiry('Wärmepumpe')}
+            >
+              Wärmepumpe
+            </ChipButton>
+            <ChipButton
+              type="button"
+              onClick={() => onSelectInquiry('Wartung / Reparatur')}
+            >
+              Service
+            </ChipButton>
+          </HeroQuickActions>
         </HeroContent>
 
         <HeroVisual>
-          <HeroPanel>
-            <HeroPanelEyebrow>Schnellanfrage</HeroPanelEyebrow>
-            <h2>Klare Wege statt langem Warten</h2>
-            <p>
-              Für Heizungsmodernisierung, Wärmepumpe, Sanitär, Wartung oder Reparatur führen wir
-              Sie direkt in den passenden nächsten Schritt.
-            </p>
-            <HeroPanelActions>
-              <ChipButton
-                type="button"
-                onClick={() => onSelectInquiry('Heizung')}
-              >
-                Heizung
-              </ChipButton>
-              <ChipButton
-                type="button"
-                onClick={() => onSelectInquiry('Wärmepumpe')}
-              >
-                Wärmepumpe
-              </ChipButton>
-              <ChipButton
-                type="button"
-                onClick={() => onSelectInquiry('Wartung / Reparatur')}
-              >
-                Service
-              </ChipButton>
-            </HeroPanelActions>
-          </HeroPanel>
-
           <HeroStats>
             {heroStats.map((stat) => (
               <HeroStatCard key={stat.value}>

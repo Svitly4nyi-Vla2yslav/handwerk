@@ -14,6 +14,7 @@ import { ServiceIntentGrid } from './components/ServiceIntentGrid';
 import { StructuredData } from './components/StructuredData';
 import { TrustSection } from './components/TrustSection';
 import { WhyChooseUsSection } from './components/WhyChooseUsSection';
+import { WorkGallery } from './components/WorkGallery';
 import { FloatingPhoneLink } from './styles/shell.styles';
 import { MainContent } from './styles/primitives';
 
@@ -54,6 +55,7 @@ function App() {
         <ServiceIntentGrid onSelectInquiry={handleSelectInquiry} />
         <TrustSection onSelectInquiry={handleSelectInquiry} />
         <MainServicesSection onSelectInquiry={handleSelectInquiry} />
+        <WorkGallery />
         <WhyChooseUsSection onSelectInquiry={handleSelectInquiry} />
         <ProcessSection />
         <HeatPumpLeadSection onSelectInquiry={handleSelectInquiry} />

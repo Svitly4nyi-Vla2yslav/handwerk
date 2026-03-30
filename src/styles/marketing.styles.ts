@@ -20,9 +20,29 @@ export const TwoColumnLayout = styled(Container)`
   }
 `;
 
+export const TrustFrame = styled(Container)`
+  ${PanelBase};
+  display: grid;
+  grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.96fr);
+  gap: 32px;
+  align-items: stretch;
+  padding: clamp(28px, 4vw, 38px);
+  background: rgba(255, 255, 255, 0.72);
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const TrustContentColumn = styled.div`
+  display: grid;
+  align-content: start;
+  gap: 10px;
+`;
+
 export const TrustList = styled.div`
   display: grid;
-  gap: 18px;
+  gap: 16px;
 `;
 
 export const TrustItem = styled.article`
@@ -47,6 +67,10 @@ export const TrustItemIcon = styled(IconBadge)``;
 export const TrustPanel = styled.aside`
   ${PanelBase};
   padding: 28px;
+  display: grid;
+  gap: 18px;
+  background: rgba(249, 246, 242, 0.92);
+  height: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     padding: 24px;
@@ -56,6 +80,7 @@ export const TrustPanel = styled.aside`
 export const TrustChipGrid = styled.div`
   display: grid;
   gap: 14px;
+  grid-auto-rows: 1fr;
 `;
 
 export const TrustChip = styled.article`
@@ -74,7 +99,7 @@ export const TrustChip = styled.article`
 `;
 
 export const PanelFooter = styled.div`
-  margin-top: 24px;
+  margin-top: auto;
   padding-top: 20px;
   border-top: 1px solid rgba(21, 33, 43, 0.08);
 
@@ -150,12 +175,14 @@ export const ServiceBody = styled.div`
   }
 `;
 
-export const CheckList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 14px;
+export const CheckListWrap = styled.div`
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 14px;
+  }
 
   li {
     display: grid;

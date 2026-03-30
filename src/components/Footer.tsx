@@ -5,7 +5,7 @@ import {
   FooterBrand,
   FooterCopy,
   FooterGrid,
-  FooterList,
+  FooterListWrap,
   FooterShell,
   FooterTitle
 } from '../styles/shell.styles';
@@ -30,41 +30,47 @@ export function Footer() {
 
         <div>
           <FooterTitle>Kontakt</FooterTitle>
-          <FooterList>
-            <li>{company.phoneDisplay}</li>
-            <li>{company.email}</li>
-            <li>{company.addressLine1}</li>
-            <li>{company.addressLine2}</li>
-            <li>{company.openingHours}</li>
-          </FooterList>
+          <FooterListWrap>
+            <ul>
+              <li>{company.phoneDisplay}</li>
+              <li>{company.email}</li>
+              <li>{company.addressLine1}</li>
+              <li>{company.addressLine2}</li>
+              <li>{company.openingHours}</li>
+            </ul>
+          </FooterListWrap>
         </div>
 
         <div>
           <FooterTitle>Leistungen</FooterTitle>
-          <FooterList>
-            {mainServices.map((service) => (
-              <li key={service.id}>
-                <a href={`#${service.id}`}>{service.eyebrow}</a>
-              </li>
-            ))}
-          </FooterList>
+          <FooterListWrap>
+            <ul>
+              {mainServices.map((service) => (
+                <li key={service.id}>
+                  <a href={`#${service.id}`}>{service.eyebrow}</a>
+                </li>
+              ))}
+            </ul>
+          </FooterListWrap>
         </div>
 
         <div>
           <FooterTitle>Navigation</FooterTitle>
-          <FooterList>
-            {navigation.map((item) => (
-              <li key={item.href}>
-                <a href={item.href}>{item.label}</a>
+          <FooterListWrap>
+            <ul>
+              {navigation.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))}
+              <li>
+                <a href="#kontaktformular">Angebot anfragen</a>
               </li>
-            ))}
-            <li>
-              <a href="#kontaktformular">Angebot anfragen</a>
-            </li>
-            <li>
-              <a href="#rechtliches">Impressum / Datenschutz</a>
-            </li>
-          </FooterList>
+              <li>
+                <a href="#rechtliches">Impressum / Datenschutz</a>
+              </li>
+            </ul>
+          </FooterListWrap>
         </div>
       </FooterGrid>
 

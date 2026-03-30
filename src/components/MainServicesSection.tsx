@@ -1,7 +1,8 @@
 import { company, mainServices } from '../data/siteContent';
+import { serviceSectionMedia } from '../data/mediaAssets';
 import { Button, Container, Eyebrow, Section, TextLink } from '../styles/primitives';
 import {
-  CheckList,
+  CheckListWrap,
   ServiceActions,
   ServiceBlock,
   ServiceBody,
@@ -10,7 +11,9 @@ import {
   ServiceIntro,
   ServiceStack
 } from '../styles/marketing.styles';
+import { ServiceMediaLayout } from '../styles/media.styles';
 import { Icon } from './Icon';
+import { SectionImage } from './SectionImage';
 import { SectionHeading } from './SectionHeading';
 
 interface MainServicesSectionProps {
@@ -28,62 +31,76 @@ export function MainServicesSection({ onSelectInquiry }: MainServicesSectionProp
         />
 
         <ServiceStack>
-          {mainServices.map((service) => (
+          {mainServices.map((service, index) => (
             <ServiceBlock
               key={service.id}
               id={service.id}
             >
-              <ServiceIntro>
-                <ServiceIcon>
-                  <Icon name={service.icon} />
-                </ServiceIcon>
+              <ServiceMediaLayout $reverse={index % 2 === 1}>
                 <div>
-                  <ServiceEyebrowWrap>
-                    <Eyebrow>{service.eyebrow}</Eyebrow>
-                  </ServiceEyebrowWrap>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                </div>
-              </ServiceIntro>
+                  <ServiceIntro>
+                    <ServiceIcon>
+                      <Icon name={service.icon} />
+                    </ServiceIcon>
+                    <div>
+                      <ServiceEyebrowWrap>
+                        <Eyebrow>{service.eyebrow}</Eyebrow>
+                      </ServiceEyebrowWrap>
+                      <h3>{service.title}</h3>
+                      <p>{service.description}</p>
+                    </div>
+                  </ServiceIntro>
 
-              <ServiceBody>
-                <div>
-                  <h4>Typische Situationen</h4>
-                  <CheckList>
-                    {service.problems.map((problem) => (
-                      <li key={problem}>
-                        <Icon name="check" />
-                        <span>{problem}</span>
-                      </li>
-                    ))}
-                  </CheckList>
+                  <ServiceBody>
+                    <div>
+                      <h4>Typische Situationen</h4>
+                      <CheckListWrap>
+                        <ul>
+                          {service.problems.map((problem) => (
+                            <li key={problem}>
+                              <Icon name="check" />
+                              <span>{problem}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CheckListWrap>
+                    </div>
+
+                    <div>
+                      <h4>Was wir übernehmen</h4>
+                      <CheckListWrap>
+                        <ul>
+                          {service.solutions.map((solution) => (
+                            <li key={solution}>
+                              <Icon name="check" />
+                              <span>{solution}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </CheckListWrap>
+                    </div>
+                  </ServiceBody>
+
+                  <ServiceActions>
+                    <Button
+                      $variant="primary"
+                      type="button"
+                      onClick={() => onSelectInquiry(service.preset)}
+                    >
+                      {service.cta}
+                    </Button>
+                    <TextLink href={company.phoneHref}>
+                      Mehr erfahren oder direkt anrufen
+                    </TextLink>
+                  </ServiceActions>
                 </div>
 
-                <div>
-                  <h4>Was wir übernehmen</h4>
-                  <CheckList>
-                    {service.solutions.map((solution) => (
-                      <li key={solution}>
-                        <Icon name="check" />
-                        <span>{solution}</span>
-                      </li>
-                    ))}
-                  </CheckList>
-                </div>
-              </ServiceBody>
-
-              <ServiceActions>
-                <Button
-                  $variant="primary"
-                  type="button"
-                  onClick={() => onSelectInquiry(service.preset)}
-                >
-                  {service.cta}
-                </Button>
-                <TextLink href={company.phoneHref}>
-                  Mehr erfahren oder direkt anrufen
-                </TextLink>
-              </ServiceActions>
+                <SectionImage
+                  asset={serviceSectionMedia[service.id as keyof typeof serviceSectionMedia]}
+                  caption={service.eyebrow}
+                  ratio="4 / 4.6"
+                />
+              </ServiceMediaLayout>
             </ServiceBlock>
           ))}
         </ServiceStack>

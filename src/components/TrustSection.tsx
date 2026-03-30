@@ -1,17 +1,20 @@
 import { company, trustChips, trustItems } from '../data/siteContent';
+import { advisoryMedia } from '../data/mediaAssets';
 import { Button, Section, TextLink } from '../styles/primitives';
 import {
   InlineActions,
   PanelFooter,
   TrustChip,
   TrustChipGrid,
+  TrustContentColumn,
+  TrustFrame,
   TrustItem,
   TrustItemIcon,
   TrustList,
   TrustPanel,
-  TwoColumnLayout
 } from '../styles/marketing.styles';
 import { Icon } from './Icon';
+import { SectionImage } from './SectionImage';
 import { SectionHeading } from './SectionHeading';
 
 interface TrustSectionProps {
@@ -21,8 +24,8 @@ interface TrustSectionProps {
 export function TrustSection({ onSelectInquiry }: TrustSectionProps) {
   return (
     <Section $variant="muted">
-      <TwoColumnLayout>
-        <div>
+      <TrustFrame>
+        <TrustContentColumn>
           <SectionHeading
             eyebrow="Vertrauen und Orientierung"
             title="Aufgestellt wie ein moderner SHK-Fachbetrieb"
@@ -42,9 +45,14 @@ export function TrustSection({ onSelectInquiry }: TrustSectionProps) {
               </TrustItem>
             ))}
           </TrustList>
-        </div>
+        </TrustContentColumn>
 
         <TrustPanel>
+          <SectionImage
+            asset={advisoryMedia}
+            caption="Beratung, Fördermittel, klarer Ablauf"
+            ratio="4 / 3.2"
+          />
           <TrustChipGrid>
             {trustChips.map((chip) => (
               <TrustChip key={chip.emphasis}>
@@ -72,7 +80,7 @@ export function TrustSection({ onSelectInquiry }: TrustSectionProps) {
             </InlineActions>
           </PanelFooter>
         </TrustPanel>
-      </TwoColumnLayout>
+      </TrustFrame>
     </Section>
   );
 }

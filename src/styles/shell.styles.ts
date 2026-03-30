@@ -2,42 +2,87 @@ import styled from 'styled-components';
 import { bodyText, BrandLink, Container, headingTypography } from './primitives';
 
 export const HeaderShell = styled.header`
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 20;
-  backdrop-filter: blur(18px);
-  background: rgba(247, 243, 238, 0.82);
-  border-bottom: 1px solid rgba(21, 33, 43, 0.08);
+  padding: 12px 12px 0;
+  pointer-events: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 8px 8px 0;
+  }
 `;
 
-export const HeaderInner = styled(Container)`
+export const HeaderInner = styled(Container)<{ $solid?: boolean }>`
   min-height: ${({ theme }) => theme.layout.headerHeight};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 28px;
+  gap: 18px;
+  padding: 0 18px;
+  border-radius: 24px;
+  border: 1px solid
+    ${({ $solid }) =>
+      $solid ? 'rgba(255, 255, 255, 0.34)' : 'rgba(255, 255, 255, 0.16)'};
+  background: ${({ $solid }) =>
+    $solid ? 'rgba(247, 243, 238, 0.76)' : 'rgba(20, 28, 36, 0.28)'};
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  box-shadow: ${({ $solid }) =>
+    $solid
+      ? '0 18px 44px rgba(16, 24, 31, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.22)'
+      : '0 18px 44px rgba(8, 12, 16, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.08)'};
+  pointer-events: auto;
+  transition:
+    background 0.24s ease,
+    border-color 0.24s ease,
+    box-shadow 0.24s ease;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     gap: 14px;
+    padding: 0 14px;
+    border-radius: 20px;
   }
 `;
 
-export const HeaderBrand = styled(BrandLink)``;
+export const HeaderBrand = styled(BrandLink)<{ $solid?: boolean }>`
+  flex: 0 0 auto;
+  min-width: 0;
 
-export const SiteNav = styled.nav`
+  strong {
+    color: ${({ theme, $solid }) =>
+      $solid ? theme.colors.text : 'rgba(255, 255, 255, 0.96)'};
+  }
+
+  span span {
+    color: ${({ theme, $solid }) =>
+      $solid ? theme.colors.textSoft : 'rgba(255, 255, 255, 0.72)'};
+  }
+`;
+
+export const SiteNav = styled.nav<{ $solid?: boolean }>`
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: nowrap;
+  min-width: 0;
+  white-space: nowrap;
 
   a {
-    color: ${({ theme }) => theme.colors.textSoft};
+    color: ${({ theme, $solid }) =>
+      $solid ? theme.colors.textSoft : 'rgba(255, 255, 255, 0.78)'};
+    flex: 0 0 auto;
     transition:
       color 0.2s ease,
       transform 0.2s ease;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.text};
+      color: ${({ theme, $solid }) =>
+        $solid ? theme.colors.text : 'rgba(255, 255, 255, 0.98)'};
     }
   }
 
@@ -47,19 +92,29 @@ export const SiteNav = styled.nav`
 `;
 
 export const HeaderActions = styled.div`
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 14px;
 `;
 
-export const PhonePill = styled.a`
+export const PhonePill = styled.a<{ $solid?: boolean }>`
   display: inline-flex;
   align-items: center;
   padding: 12px 16px;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1px solid
+    ${({ $solid }) =>
+      $solid ? 'rgba(21, 33, 43, 0.1)' : 'rgba(255, 255, 255, 0.18)'};
   border-radius: ${({ theme }) => theme.radii.pill};
-  background: rgba(255, 255, 255, 0.72);
+  background: ${({ $solid }) =>
+    $solid ? 'rgba(255, 255, 255, 0.62)' : 'rgba(255, 255, 255, 0.1)'};
+  color: ${({ theme, $solid }) =>
+    $solid ? theme.colors.text : 'rgba(255, 255, 255, 0.92)'};
   white-space: nowrap;
+  transition:
+    background 0.24s ease,
+    border-color 0.24s ease,
+    color 0.24s ease;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
     display: none;
@@ -95,13 +150,16 @@ export const FooterCopy = styled.p`
   margin: 16px 0 0;
 `;
 
-export const FooterList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 10px;
+export const FooterListWrap = styled.div`
   color: rgba(238, 242, 244, 0.72);
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
 
   a {
     color: inherit;

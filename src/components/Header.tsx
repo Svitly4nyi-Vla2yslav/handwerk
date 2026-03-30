@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { company, navigation } from '../data/siteContent';
 import { BrandMark, BrandText, Button } from '../styles/primitives';
 import {
@@ -14,12 +15,28 @@ interface HeaderProps {
 }
 
 export function Header({ onPrimaryCta }: HeaderProps) {
+  const [isSolid, setIsSolid] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSolid(window.scrollY > 72);
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <HeaderShell>
-      <HeaderInner>
+      <HeaderInner $solid={isSolid}>
         <HeaderBrand
           href="#start"
           aria-label={`${company.name} Startseite`}
+          $solid={isSolid}
         >
           <BrandMark>NW</BrandMark>
           <BrandText>
@@ -28,7 +45,10 @@ export function Header({ onPrimaryCta }: HeaderProps) {
           </BrandText>
         </HeaderBrand>
 
-        <SiteNav aria-label="Hauptnavigation">
+        <SiteNav
+          aria-label="Hauptnavigation"
+          $solid={isSolid}
+        >
           {navigation.map((item) => (
             <a
               key={item.href}
@@ -40,7 +60,10 @@ export function Header({ onPrimaryCta }: HeaderProps) {
         </SiteNav>
 
         <HeaderActions>
-          <PhonePill href={company.phoneHref}>
+          <PhonePill
+            href={company.phoneHref}
+            $solid={isSolid}
+          >
             {company.phoneDisplay}
           </PhonePill>
           <Button
