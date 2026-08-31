@@ -26,6 +26,19 @@ The project demonstrates how a local service business can present its services c
 - Vite
 - SWC via `@vitejs/plugin-react-swc`
 
+## Local SEO and conversion approach
+
+This demo is intentionally structured around common needs of a local Handwerk business rather than around a generic landing-page template.
+
+- service-specific sections give search visitors a direct path to the topic they need
+- the local service-area section creates a clear geographic context for Hildesheim and nearby towns
+- FAQ and process sections reduce uncertainty before a customer makes contact
+- mobile call-to-action elements keep the main conversion action visible on smaller screens
+- structured data and centralized company information provide a foundation for production local SEO
+- enquiry presets reduce the effort required to submit a service request
+
+The goal is not only to make the page visually modern, but to connect content structure, local search intent and a simple contact path.
+
 ## Getting started
 
 ### Requirements
