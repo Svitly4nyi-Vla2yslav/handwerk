@@ -88,6 +88,8 @@ Most business copy and placeholder contact details are centralized in `src/data/
 
 This repository is intended as a portfolio example and reusable frontend concept. Before using it for a real company, replace all fictional company data, review legal pages and consent requirements, connect the contact flow to a real backend or form provider, and validate production SEO/structured-data values for the actual business.
 
+The demo `index.html` intentionally includes `noindex, nofollow` so search engines do not index the fictional `Nordwärme SHK` business. Remove or replace that robots directive only when the site has verified production company data and a final public URL that is ready to be indexed.
+
 ## License
 
 See [LICENSE](LICENSE).
