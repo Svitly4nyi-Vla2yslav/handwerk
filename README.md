@@ -69,6 +69,16 @@ The build command runs the TypeScript type check first and then creates the Vite
 npm run preview
 ```
 
+## Verification before deployment
+
+The current minimum production check is:
+
+```bash
+npm run build
+```
+
+This verifies TypeScript with `tsc --noEmit` before Vite creates the production bundle. The repository does not currently define dedicated lint or automated test scripts, so a successful build should be treated as the baseline check rather than a complete production-quality test suite.
+
 ## Project structure
 
 ```text
