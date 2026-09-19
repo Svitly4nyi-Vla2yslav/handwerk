@@ -112,6 +112,7 @@ export function ContactCTASection({
                 key={item.title}
                 type="button"
                 $active={service === item.preset}
+                aria-pressed={service === item.preset}
                 onClick={() => {
                   setService(item.preset);
                   onSelectInquiry(item.preset);
