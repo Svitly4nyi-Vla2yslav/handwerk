@@ -32,8 +32,12 @@ export function Footer() {
           <FooterTitle>Kontakt</FooterTitle>
           <FooterListWrap>
             <ul>
-              <li>{company.phoneDisplay}</li>
-              <li>{company.email}</li>
+              <li>
+                <a href={company.phoneHref}>{company.phoneDisplay}</a>
+              </li>
+              <li>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </li>
               <li>{company.addressLine1}</li>
               <li>{company.addressLine2}</li>
               <li>{company.openingHours}</li>
