@@ -49,6 +49,8 @@ The goal is not only to make the page visually modern, but to connect content st
 ### Install and run
 
 ```bash
+git clone https://github.com/Svitly4nyi-Vla2yslav/handwerk.git
+cd handwerk
 npm install
 npm run dev
 ```
