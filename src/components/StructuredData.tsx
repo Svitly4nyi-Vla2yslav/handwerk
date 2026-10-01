@@ -32,6 +32,11 @@ const structuredData = {
   url: 'https://www.nordwaerme-shk.de'
 };
 
+/**
+ * Рендерить JSON-LD опис LocalBusiness із даних компанії для пошукових систем.
+ * Компонент не створює видимого інтерфейсу; результат серіалізується в script-тег,
+ * а `dangerouslySetInnerHTML` безпечний тут лише тому, що джерело є локальною константою.
+ */
 export function StructuredData() {
   return (
     <script
