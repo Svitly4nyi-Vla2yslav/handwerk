@@ -17,6 +17,11 @@ interface SectionImageProps {
   ratio?: string;
 }
 
+/**
+ * Рендерить адаптивне зображення секції з необов'язковими накладеним вмістом і підписом.
+ * `asset` надає src та alt; `loading`, `priority`, `overlay` і `ratio` керують
+ * завантаженням та оформленням. Компонент не має власного стану чи побічних ефектів.
+ */
 export function SectionImage({
   asset,
   caption,
