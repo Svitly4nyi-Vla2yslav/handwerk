@@ -7,6 +7,11 @@ interface FAQSectionProps {
   onSelectInquiry: (preset: string) => void;
 }
 
+/**
+ * Рендерить FAQ та дві наступні дії: прямий телефонний дзвінок і перехід до консультації.
+ * `onSelectInquiry` отримує preset `Beratung`, щоб батьківський компонент заповнив
+ * форму запиту; сам FAQ не змінює стан і бере питання та контакти з централізованих даних.
+ */
 export function FAQSection({ onSelectInquiry }: FAQSectionProps) {
   return (
     <Section
