@@ -12,6 +12,11 @@ interface SectionHeadingProps {
   align?: 'left' | 'center';
 }
 
+/**
+ * Формує однаковий заголовок маркетингової секції з необов'язковим eyebrow.
+ * Приймає title, пояснювальний text і вирівнювання; повертає лише презентаційну
+ * розмітку без локального стану та побічних ефектів.
+ */
 export function SectionHeading({
   eyebrow,
   title,
