@@ -6,6 +6,8 @@ interface MobileCtaBarProps {
   onSelectInquiry: (preset: string) => void;
 }
 
+// Компонент приймає callback вибору запиту й повертає мобільну панель із дзвінком та переходом до пропозиції.
+// Телефон відкривається через company.phoneHref, а кнопка Angebot передає батьківському workflow фіксований preset.
 export function MobileCtaBar({ onSelectInquiry }: MobileCtaBarProps) {
   return (
     <MobileCtaBarWrap>
