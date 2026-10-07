@@ -11,18 +11,21 @@ import {
   GalleryTrack
 } from '../styles/media.styles';
 
+// WorkGallery дублює набір робіт для безшовного циклу, автоматично прокручує картки та призупиняється під час взаємодії.
 export function WorkGallery() {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const resumeTimeoutRef = useRef<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const slides = [...workGalleryItems, ...workGalleryItems];
 
+  // Перший ефект підтримує позицію у першій половині дубльованого track і очищає scroll-listener та відкладене відновлення.
   useEffect(() => {
     const track = trackRef.current;
     if (!track) {
       return;
     }
 
+    // syncLoopPosition непомітно віднімає половину ширини після переходу до дубльованого набору.
     const syncLoopPosition = () => {
       const halfWidth = track.scrollWidth / 2;
       if (track.scrollLeft >= halfWidth) {
@@ -39,6 +42,7 @@ export function WorkGallery() {
     };
   }, []);
 
+  // Другий ефект запускає інтервал автопрокрутки лише коли взаємодія не поставила галерею на паузу.
   useEffect(() => {
     if (isPaused) {
       return;
@@ -49,6 +53,7 @@ export function WorkGallery() {
       return;
     }
 
+    // advance визначає крок за координатами сусідніх карток, нормалізує край циклу та плавно переходить на одну картку.
     const advance = () => {
       const cards = track.querySelectorAll<HTMLElement>('[data-gallery-card]');
       if (cards.length < 2) {
@@ -72,6 +77,7 @@ export function WorkGallery() {
     return () => window.clearInterval(intervalId);
   }, [isPaused]);
 
+  // scheduleResume скасовує попередній таймер і відновлює автопрокрутку через 2,2 с після завершення жесту.
   function scheduleResume() {
     if (resumeTimeoutRef.current) {
       window.clearTimeout(resumeTimeoutRef.current);
@@ -82,6 +88,7 @@ export function WorkGallery() {
     }, 2200);
   }
 
+  // pauseSlider зупиняє очікуване відновлення та одразу переводить галерею у стан паузи.
   function pauseSlider() {
     if (resumeTimeoutRef.current) {
       window.clearTimeout(resumeTimeoutRef.current);
