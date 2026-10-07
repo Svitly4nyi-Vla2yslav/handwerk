@@ -15,10 +15,13 @@ interface HeaderProps {
   onPrimaryCta: (preset: string) => void;
 }
 
+// Header приймає onPrimaryCta, формує навігацію й передає пресет «Angebot anfragen» батьківській формі без автоматичного надсилання.
 export function Header({ onPrimaryCta }: HeaderProps) {
   const [isSolid, setIsSolid] = useState(false);
 
+  // Ефект синхронізує контрастний стан шапки з прокруткою та прибирає passive-слухач під час демонтажу.
   useEffect(() => {
+    // handleScroll вмикає суцільний фон після перших 72 px сторінки.
     const handleScroll = () => {
       setIsSolid(window.scrollY > 72);
     };
