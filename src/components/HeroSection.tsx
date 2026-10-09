@@ -27,6 +27,10 @@ interface HeroSectionProps {
   onSelectInquiry: (preset: string) => void;
 }
 
+/**
+ * Формує перший екран із пріоритетним hero-зображенням, контактними діями та довірою.
+ * onSelectInquiry передає вибраний preset до форми, але сам компонент нічого не надсилає.
+ */
 export function HeroSection({ onSelectInquiry }: HeroSectionProps) {
   return (
     <HeroSectionWrap id="start">
@@ -82,6 +86,7 @@ export function HeroSection({ onSelectInquiry }: HeroSectionProps) {
           </GhostButton>
 
           <HeroTrustList>
+            {/* Текст пункту одночасно є стабільним ключем, бо список складається з унікальних тез. */}
             {heroTrustPoints.map((point) => (
               <li key={point}>{point}</li>
             ))}
@@ -111,6 +116,7 @@ export function HeroSection({ onSelectInquiry }: HeroSectionProps) {
 
         <HeroVisual>
           <HeroStats>
+            {/* Картки відображають підготовлені показники без додаткових обчислень або запитів. */}
             {heroStats.map((stat) => (
               <HeroStatCard key={stat.value}>
                 <strong>{stat.value}</strong>
