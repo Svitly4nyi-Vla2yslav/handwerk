@@ -13,6 +13,10 @@ interface HeatPumpLeadSectionProps {
   onSelectInquiry: (preset: string) => void;
 }
 
+/**
+ * Пояснює сценарії застосування теплового насоса та пропонує два рівні звернення.
+ * Обидві кнопки лише передають preset у спільну форму; секція не виконує оцінку чи відправлення самостійно.
+ */
 export function HeatPumpLeadSection({ onSelectInquiry }: HeatPumpLeadSectionProps) {
   return (
     <Section
@@ -27,6 +31,7 @@ export function HeatPumpLeadSection({ onSelectInquiry }: HeatPumpLeadSectionProp
             text="Viele Eigentümerinnen und Eigentümer fragen sich, ob eine Wärmepumpe im Altbau sinnvoll ist. Die Antwort hängt weniger von Schlagworten ab als von Gebäudedaten, Heizflächen und Ihrem Modernisierungsziel."
           />
 
+          {/* Інформаційні картки описують контекст перевірки, а не гарантують технічну придатність об'єкта. */}
           <HeatpumpBenefits>
             <article>
               <h3>Altbau und Sanierung</h3>
@@ -65,6 +70,7 @@ export function HeatPumpLeadSection({ onSelectInquiry }: HeatPumpLeadSectionProp
           </CtaRow>
         </div>
 
+        {/* Картка готує користувача до майбутнього quick-check, але зараз веде до тієї самої форми. */}
         <QuickCheckCard>
           <Eyebrow>Schnellcheck</Eyebrow>
           <h3>Ist eine Wärmepumpe bei Ihnen ein realistischer nächster Schritt?</h3>
