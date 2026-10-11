@@ -4,6 +4,11 @@ interface IconProps {
   name: IconName;
 }
 
+/**
+ * Перетворює типізоване ім’я на декоративну inline-SVG іконку.
+ * Усі варіанти мають `aria-hidden`, тому видимий підпис має надавати батьківський компонент;
+ * невідоме значення захисно повертає `null`.
+ */
 export function Icon({ name }: IconProps) {
   switch (name) {
     case 'heat':
