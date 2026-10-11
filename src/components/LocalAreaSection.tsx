@@ -15,6 +15,11 @@ interface LocalAreaSectionProps {
   onSelectInquiry: (preset: string) => void;
 }
 
+/**
+ * Рендерить локальну зону обслуговування з переліку `areaList` і тематичним медіа.
+ * CTA не надсилає форму: він передає батьківському компоненту preset
+ * `Lokale Anfrage Hildesheim`, щоб той заповнив наступний крок звернення.
+ */
 export function LocalAreaSection({ onSelectInquiry }: LocalAreaSectionProps) {
   return (
     <Section id="einsatzgebiet">
