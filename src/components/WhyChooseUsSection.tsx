@@ -7,6 +7,11 @@ interface WhyChooseUsSectionProps {
   onSelectInquiry: (preset: string) => void;
 }
 
+/**
+ * Показує переваги з централізованого контенту та дві CTA-дії.
+ * onSelectInquiry отримує точний preset вибраної теми; батьківський компонент
+ * відповідає за перенесення цього значення у форму та прокрутку до неї.
+ */
 export function WhyChooseUsSection({ onSelectInquiry }: WhyChooseUsSectionProps) {
   return (
     <Section $variant="dark">
