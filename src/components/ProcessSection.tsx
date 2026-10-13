@@ -12,6 +12,11 @@ import { SectionImage } from './SectionImage';
 import { Icon } from './Icon';
 import { SectionHeading } from './SectionHeading';
 
+/**
+ * Формує секцію послідовності робіт із централізованих processSteps.
+ * Функція не приймає аргументів і не змінює стан: повертає зображення та
+ * картки, де індекс показується від 01, а стабільним ключем є назва кроку.
+ */
 export function ProcessSection() {
   return (
     <Section id="ablauf">
