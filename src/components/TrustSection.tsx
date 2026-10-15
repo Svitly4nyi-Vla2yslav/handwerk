@@ -21,6 +21,10 @@ interface TrustSectionProps {
   onSelectInquiry: (preset: string) => void;
 }
 
+/**
+ * Показує аргументи довіри, консультаційний медіаблок і способи зв'язку з компанією.
+ * Кнопка викликає onSelectInquiry з фіксованим пресетом, а телефонне посилання використовує дані company.
+ */
 export function TrustSection({ onSelectInquiry }: TrustSectionProps) {
   return (
     <Section $variant="muted">
@@ -84,3 +88,4 @@ export function TrustSection({ onSelectInquiry }: TrustSectionProps) {
     </Section>
   );
 }
+
