@@ -20,6 +20,10 @@ interface MainServicesSectionProps {
   onSelectInquiry: (preset: string) => void;
 }
 
+/**
+ * Формує секцію основних послуг із проблемами, рішеннями та чергуванням медіаблоків.
+ * Передає preset вибраної послуги в onSelectInquiry, щоб зовнішній контейнер підготував форму звернення.
+ */
 export function MainServicesSection({ onSelectInquiry }: MainServicesSectionProps) {
   return (
     <Section>
@@ -108,3 +112,4 @@ export function MainServicesSection({ onSelectInquiry }: MainServicesSectionProp
     </Section>
   );
 }
+
