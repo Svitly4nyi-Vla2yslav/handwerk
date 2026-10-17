@@ -24,6 +24,11 @@ interface ContactCTASectionProps {
   onSelectInquiry: (preset: string) => void;
 }
 
+/**
+ * Керує демонстраційною контактною формою та синхронізує вибрану послугу із зовнішнім пресетом.
+ * selectedPreset задає початковий і оновлений вибір, а onSelectInquiry повідомляє батьківський компонент
+ * про натискання пресета. Надсилання лише перемикає локальне підтвердження й не передає дані назовні.
+ */
 export function ContactCTASection({
   selectedPreset,
   onSelectInquiry
@@ -37,10 +42,15 @@ export function ContactCTASection({
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
+  // Оновлюємо поле послуги, якщо пресет був обраний в іншій частині сторінки.
   useEffect(() => {
     setService(selectedPreset);
   }, [selectedPreset]);
 
+  /**
+   * Зупиняє стандартне надсилання форми та показує демонстраційне підтвердження.
+   * Дані не записуються і не надсилаються до сервера.
+   */
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSubmitted(true);
