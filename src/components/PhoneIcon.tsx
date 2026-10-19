@@ -2,6 +2,10 @@ interface PhoneIconProps {
   className?: string;
 }
 
+/**
+ * Повертає декоративну SVG-іконку телефону з кольором currentColor.
+ * className дозволяє батьківському компоненту стилізувати її; aria-hidden виключає дублювання підпису для screen reader.
+ */
 export function PhoneIcon({ className }: PhoneIconProps) {
   return (
     <svg
