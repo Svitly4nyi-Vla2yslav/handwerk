@@ -19,9 +19,14 @@ import { WorkGallery } from './components/WorkGallery';
 import { FloatingPhoneLink } from './styles/shell.styles';
 import { MainContent } from './styles/primitives';
 
+/**
+ * Збирає всі секції landing page та зберігає preset, який має отримати контактна форма.
+ * Компонент також встановлює SEO-метадані документа й координує плавний перехід до форми.
+ */
 function App() {
   const [selectedPreset, setSelectedPreset] = useState('Angebot anfragen');
 
+  // Одноразово синхронізує title і meta description; за відсутності meta-тега створює його в document.head.
   useEffect(() => {
     document.title = 'Heizung, Sanitär & Wärmepumpen in Hildesheim | Nordwärme SHK';
 
@@ -38,6 +43,10 @@ function App() {
     metaDescription.setAttribute('content', description);
   }, []);
 
+  /**
+   * Приймає сценарій звернення, передає його контактній секції та прокручує до форми.
+   * Якщо секцію ще не знайдено в DOM, preset усе одно зберігається без помилки.
+   */
   function handleSelectInquiry(preset: string) {
     setSelectedPreset(preset);
 
