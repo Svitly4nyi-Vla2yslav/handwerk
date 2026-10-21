@@ -23,6 +23,11 @@ export interface GalleryAsset extends MediaAsset {
   description: string;
 }
 
+/**
+ * Централізований реєстр медіа зв’язує імпортовані файли з описовими alt-текстами.
+ * Компоненти отримують готові `MediaAsset` або `GalleryAsset`, тому не дублюють
+ * шляхи, підписи й описи та можуть зберігати однакову семантику доступності.
+ */
 export const heroMedia: MediaAsset = {
   src: heroFallback,
   alt: 'SHK-Fachkraft bei der Arbeit an einer modernen Heizungsanlage im Kundenobjekt'
