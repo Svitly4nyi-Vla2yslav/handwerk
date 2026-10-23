@@ -10,6 +10,9 @@ import type {
   TrustItem
 } from '../types/content';
 
+// Централізоване джерело текстів, контактів і пресетів для маркетингових секцій.
+// Компоненти читають ці структури без запитів; значення preset передаються у спільну форму звернення.
+
 export const company = {
   name: 'Nordwärme SHK',
   claim: 'Heizung, Sanitär & Wärmepumpen in Hildesheim',
