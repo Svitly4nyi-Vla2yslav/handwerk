@@ -1,5 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
+// GlobalStyle застосовує базову типографіку, фон, focus-visible та reset
+// до всього документа. На мобільній ширині нижній padding резервує місце
+// для фіксованої CTA-панелі; підключення компонента змінює глобальний CSS.
 export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
