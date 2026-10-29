@@ -18,9 +18,9 @@ interface SectionImageProps {
 }
 
 /**
- * Рендерить адаптивне зображення секції з необов'язковими накладеним вмістом і підписом.
- * `asset` надає src та alt; `loading`, `priority`, `overlay` і `ratio` керують
- * завантаженням та оформленням. Компонент не має власного стану чи побічних ефектів.
+ * Приймає media asset і необов’язкові caption, children та параметри завантаження/оформлення.
+ * Повертає figure з async-decoding зображенням; priority підвищує fetchPriority, але не змінює loading.
+ * Дочірній вміст потрапляє в overlay, підпис — у figcaption; стану й побічних ефектів немає.
  */
 export function SectionImage({
   asset,
