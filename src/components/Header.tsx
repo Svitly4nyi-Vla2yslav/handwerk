@@ -15,13 +15,17 @@ interface HeaderProps {
   onPrimaryCta: (preset: string) => void;
 }
 
-// Header приймає onPrimaryCta, формує навігацію й передає пресет «Angebot anfragen» батьківській формі без автоматичного надсилання.
+/**
+ * Формує шапку з якірною навігацією, телефонною дією та головним CTA.
+ * Приймає onPrimaryCta й передає йому пресет «Angebot anfragen» без надсилання форми;
+ * локальний isSolid керує лише контрастом шапки залежно від прокрутки.
+ */
 export function Header({ onPrimaryCta }: HeaderProps) {
   const [isSolid, setIsSolid] = useState(false);
 
-  // Ефект синхронізує контрастний стан шапки з прокруткою та прибирає passive-слухач під час демонтажу.
+  // Синхронізує контрастний стан одразу після монтування та на кожній прокрутці; cleanup прибирає глобальний слухач.
   useEffect(() => {
-    // handleScroll вмикає суцільний фон після перших 72 px сторінки.
+    // Повертає isSolid=true лише після проходження порога 72 px; інших DOM-властивостей не змінює.
     const handleScroll = () => {
       setIsSolid(window.scrollY > 72);
     };
