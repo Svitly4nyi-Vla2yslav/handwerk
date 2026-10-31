@@ -8,8 +8,11 @@ interface ServiceIntentGridProps {
   onSelectInquiry: (preset: string) => void;
 }
 
-// Компонент приймає callback запиту та повертає сітку швидких входів, побудовану з serviceIntentCards.
-// Натискання не надсилає форму: воно лише передає preset угору для заповнення відповідного сценарію.
+/**
+ * Будує сітку швидких сценаріїв із централізованого serviceIntentCards.
+ * Приймає onSelectInquiry і передає йому preset вибраної картки; натискання не надсилає
+ * форму й не змінює дані самостійно, а делегує заповнення та прокрутку батьківському компоненту.
+ */
 export function ServiceIntentGrid({ onSelectInquiry }: ServiceIntentGridProps) {
   return (
     <Section id="leistungen">
@@ -21,7 +24,7 @@ export function ServiceIntentGrid({ onSelectInquiry }: ServiceIntentGridProps) {
         />
 
         <IntentGrid>
-          {/* title є стабільним ключем, а preset визначає значення для подальшої форми запиту. */}
+          {/* title є ключем картки, icon визначає типізовану SVG, а preset — майбутній сценарій форми. */}
           {serviceIntentCards.map((card) => (
             <IntentCard key={card.title}>
               <IconBadge>
