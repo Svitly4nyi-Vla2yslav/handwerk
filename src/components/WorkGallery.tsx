@@ -11,14 +11,18 @@ import {
   GalleryTrack
 } from '../styles/media.styles';
 
-// WorkGallery дублює набір робіт для безшовного циклу, автоматично прокручує картки та призупиняється під час взаємодії.
+/**
+ * Дублює централізований набір робіт для безшовного циклу, автоматично прокручує картки
+ * та ставить рух на паузу під час взаємодії. Компонент не приймає аргументів; його побічні
+ * ефекти обмежені scroll-слухачем, інтервалом, таймером відновлення й позицією власного track.
+ */
 export function WorkGallery() {
   const trackRef = useRef<HTMLDivElement | null>(null);
   const resumeTimeoutRef = useRef<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const slides = [...workGalleryItems, ...workGalleryItems];
 
-  // Перший ефект підтримує позицію у першій половині дубльованого track і очищає scroll-listener та відкладене відновлення.
+    // Перший ефект підтримує позицію в першій половині дубльованого track і очищає слухач та таймер відновлення.
   useEffect(() => {
     const track = trackRef.current;
     if (!track) {
@@ -42,7 +46,7 @@ export function WorkGallery() {
     };
   }, []);
 
-  // Другий ефект запускає інтервал автопрокрутки лише коли взаємодія не поставила галерею на паузу.
+    // Другий ефект запускає інтервал кожні 4,2 с лише тоді, коли взаємодія не поставила галерею на паузу.
   useEffect(() => {
     if (isPaused) {
       return;
