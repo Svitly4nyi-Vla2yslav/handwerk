@@ -87,6 +87,16 @@ npm run build
 
 This verifies TypeScript with `tsc --noEmit` before Vite creates the production bundle. The repository does not currently define dedicated lint or automated test scripts, so a successful build should be treated as the baseline check rather than a complete production-quality test suite.
 
+### Ручна перевірка демонстрації
+
+Після `npm run dev` перевір у браузері такі сценарії (автоматизованих тестів для них наразі немає):
+
+1. Перейди за якірними посиланнями в шапці й переконайся, що відкриваються відповідні секції.
+2. Натисни кнопку запиту в шапці або пресет у секції послуг: сторінка має прокрутитися до `#kontaktformular`, а вибраний сценарій має відобразитися в контактній формі.
+3. Надішли демонстраційну форму: підтвердження має з’явитися локально, без мережевого запиту чи збереження даних.
+4. Перевір телефонні та поштові посилання на мобільному екрані. Їхні адреси є вигаданими, тому не використовуй їх для реальних звернень.
+5. Перед публікацією реального сайту окремо перевір `noindex, nofollow` у `index.html`, юридичні сторінки та фактичні дані компанії.
+
 ## Project structure
 
 ```text
