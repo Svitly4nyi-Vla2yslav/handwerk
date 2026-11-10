@@ -21,8 +21,10 @@ interface MainServicesSectionProps {
 }
 
 /**
- * Формує секцію основних послуг із проблемами, рішеннями та чергуванням медіаблоків.
- * Передає preset вибраної послуги в onSelectInquiry, щоб зовнішній контейнер підготував форму звернення.
+ * Формує секцію з конфігурації mainServices: проблеми, рішення, CTA та відповідне зображення за service.id.
+ * Непарні елементи розвертають медіаблок для візуального чергування.
+ * @param onSelectInquiry callback, який отримує preset вибраної послуги й передає керування формою контейнеру.
+ * Компонент сам не виконує мережевих запитів і не зберігає стан.
  */
 export function MainServicesSection({ onSelectInquiry }: MainServicesSectionProps) {
   return (
