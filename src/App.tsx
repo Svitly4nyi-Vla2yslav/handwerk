@@ -20,13 +20,16 @@ import { FloatingPhoneLink } from './styles/shell.styles';
 import { MainContent } from './styles/primitives';
 
 /**
- * Збирає всі секції landing page та зберігає preset, який має отримати контактна форма.
- * Компонент також встановлює SEO-метадані документа й координує плавний перехід до форми.
+ * Збирає всі секції landing page та зберігає preset для контактної форми.
+ *
+ * Компонент є єдиною точкою координації CTA: дочірні секції передають текст
+ * сценарію, App оновлює стан і прокручує до форми. Також один раз синхронізує
+ * title та meta description документа; мережевих запитів не виконує.
  */
 function App() {
   const [selectedPreset, setSelectedPreset] = useState('Angebot anfragen');
 
-  // Одноразово синхронізує title і meta description; за відсутності meta-тега створює його в document.head.
+  // Одноразово синхронізує title і meta description; створений meta-тег залишається в head після демонтажу. і meta description; за відсутності meta-тега створює його в document.head.
   useEffect(() => {
     document.title = 'Heizung, Sanitär & Wärmepumpen in Hildesheim | Nordwärme SHK';
 
@@ -45,6 +48,8 @@ function App() {
 
   /**
    * Приймає сценарій звернення, передає його контактній секції та прокручує до форми.
+   * @param preset — текст сценарію, який має з’явитися у полі послуги.
+   * @sideEffects Оновлює React-стан і за наявності секції запускає native smooth scroll.
    * Якщо секцію ще не знайдено в DOM, preset усе одно зберігається без помилки.
    */
   function handleSelectInquiry(preset: string) {
