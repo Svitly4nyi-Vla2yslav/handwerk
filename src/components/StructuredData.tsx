@@ -1,5 +1,9 @@
 import { company } from '../data/siteContent';
 
+/**
+ * Канонічний JSON-LD опис демонстраційного LocalBusiness.
+ * Контакти беруться зі спільного company, а регіони, послуги та години роботи задаються статично.
+ */
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -34,8 +38,9 @@ const structuredData = {
 
 /**
  * Не приймає параметрів і повертає невидимий script application/ld+json з описом LocalBusiness.
- * Дані компанії та зон обслуговування серіалізуються один раз із локальної константи;
- * dangerouslySetInnerHTML не містить користувацького вводу й не виконує зовнішніх запитів.
+ * Дані компанії, зон обслуговування та пропозицій серіалізуються з локальної константи.
+ * Повернений script читають пошукові системи; dangerouslySetInnerHTML не містить користувацького вводу
+ * й не виконує зовнішніх запитів або інших побічних ефектів.
  */
 export function StructuredData() {
   return (
