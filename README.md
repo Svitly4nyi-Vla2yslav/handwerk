@@ -121,6 +121,14 @@ Most business copy and placeholder contact details are centralized in `src/data/
 
 Після заміни контенту перевірте, що кожен CTA передає зрозумілий німецький preset, а контактні та структуровані дані посилаються на одну й ту саму компанію.
 
+## Доступність і медіа
+
+Глобальні стилі показують `focus-visible` для кнопок, посилань, `summary` і полів форм. FAQ використовує нативні `details/summary`, тому розкривається клавіатурою без окремого React-стану.
+
+Hero-зображення завантажується з `eager` і високим пріоритетом, а зображення секцій і галереї — з `lazy` та асинхронним декодуванням. На мобільній ширині `body` має нижній відступ під фіксовану CTA-панель, щоб вона не перекривала вміст.
+
+Під час ручної перевірки пройдіть усі інтерактивні елементи клавішею Tab, розкрийте FAQ клавішами Enter/Space та переконайтеся на вузькому екрані, що CTA-панель не закриває форму або футер.
+
 ## Notes
 
 This repository is intended as a portfolio example and reusable frontend concept. Before using it for a real company, replace all fictional company data, review legal pages and consent requirements, connect the contact flow to a real backend or form provider, and validate production SEO/structured-data values for the actual business.
