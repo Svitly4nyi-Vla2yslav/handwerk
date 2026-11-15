@@ -112,6 +112,15 @@ src/
 
 Most business copy and placeholder contact details are centralized in `src/data/siteContent.ts`, which makes the demo easy to adapt to another local service company without scattering content across components.
 
+## Адаптація демонстрації
+
+- назву, контакти, зону обслуговування, послуги, FAQ і CTA-пресети змінюйте у `src/data/siteContent.ts`;
+- hero та галерею робіт оновлюйте через `src/data/mediaAssets.ts`, зберігаючи точні `alt`-описи;
+- порядок секцій і передачу пресета до контактної форми контролює `src/App.tsx`;
+- кольори, відступи й контрольні ширини централізовані у `src/styles/theme.ts`.
+
+Після заміни контенту перевірте, що кожен CTA передає зрозумілий німецький preset, а контактні та структуровані дані посилаються на одну й ту саму компанію.
+
 ## Notes
 
 This repository is intended as a portfolio example and reusable frontend concept. Before using it for a real company, replace all fictional company data, review legal pages and consent requirements, connect the contact flow to a real backend or form provider, and validate production SEO/structured-data values for the actual business.
