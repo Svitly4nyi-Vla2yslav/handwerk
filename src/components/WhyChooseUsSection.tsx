@@ -8,9 +8,10 @@ interface WhyChooseUsSectionProps {
 }
 
 /**
- * Показує переваги з централізованого контенту та дві CTA-дії.
- * onSelectInquiry отримує точний preset вибраної теми; батьківський компонент
- * відповідає за перенесення цього значення у форму та прокрутку до неї.
+ * Показує переваги з централізованого масиву `advantages` та дві CTA-дії.
+ * @param onSelectInquiry — callback, який отримує фіксований preset `Angebot anfragen` або `Wärmepumpe`.
+ * @returns Темну секцію з картками, де заголовок переваги використовується як стабільний ключ.
+ * @sideEffects Сам компонент не надсилає форму; кліки делегують її заповнення й прокрутку батьківському workflow.
  */
 export function WhyChooseUsSection({ onSelectInquiry }: WhyChooseUsSectionProps) {
   return (
