@@ -29,7 +29,8 @@ import { MainContent } from './styles/primitives';
 function App() {
   const [selectedPreset, setSelectedPreset] = useState('Angebot anfragen');
 
-  // Одноразово синхронізує title і meta description; створений meta-тег залишається в head після демонтажу. і meta description; за відсутності meta-тега створює його в document.head.
+  // Одноразово синхронізує title і meta description; за відсутності meta-тега створює його в document.head.
+  // Cleanup навмисно немає: останні метадані залишаються в документі після демонтажу компонента.
   useEffect(() => {
     document.title = 'Heizung, Sanitär & Wärmepumpen in Hildesheim | Nordwärme SHK';
 
