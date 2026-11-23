@@ -23,7 +23,11 @@ interface TrustSectionProps {
 
 /**
  * Показує аргументи довіри, консультаційний медіаблок і способи зв'язку з компанією.
- * Кнопка викликає onSelectInquiry з фіксованим пресетом, а телефонне посилання використовує дані company.
+ *
+ * @param onSelectInquiry — callback батьківської форми; кнопка передає йому сталий preset
+ *   Beratung / Fördermittel, тоді як телефонне посилання читає адресу з company.
+ * @returns Презентаційну секцію з картками, медіа та двома CTA без локального стану.
+ * @sideEffects Сам компонент не надсилає форму й не телефонує; лише викликає callback після кліку.
  */
 export function TrustSection({ onSelectInquiry }: TrustSectionProps) {
   return (
