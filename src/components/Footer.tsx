@@ -53,6 +53,7 @@ export function Footer() {
           <FooterTitle>Leistungen</FooterTitle>
           <FooterListWrap>
             <ul>
+              {/* Перелік послуг походить зі спільної конфігурації; service.id одночасно є якірною адресою та стабільним ключем. */}
               {mainServices.map((service) => (
                 <li key={service.id}>
                   <a href={`#${service.id}`}>{service.eyebrow}</a>
@@ -66,6 +67,7 @@ export function Footer() {
           <FooterTitle>Navigation</FooterTitle>
           <FooterListWrap>
             <ul>
+              {/* Основне меню повторно використовує ті самі href, що й header, тому ключ не залежить від перекладеного підпису. */}
               {navigation.map((item) => (
                 <li key={item.href}>
                   <a href={item.href}>{item.label}</a>
